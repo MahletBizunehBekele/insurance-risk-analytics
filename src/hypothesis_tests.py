@@ -1,12 +1,8 @@
-from scipy.stats import ttest_ind
-from scipy.stats import chi2_contingency
+from scipy.stats import ttest_ind, chi2_contingency
+import pandas as pd
 
 
 def run_ttest(group_a, group_b):
-
-    group_a = group_a.dropna()
-    group_b = group_b.dropna()
-
     stat, p_value = ttest_ind(
         group_a,
         group_b,
@@ -20,7 +16,6 @@ def run_ttest(group_a, group_b):
 
 
 def run_chi2(contingency_table):
-
     stat, p_value, dof, expected = chi2_contingency(
         contingency_table
     )
